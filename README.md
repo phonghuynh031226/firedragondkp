@@ -75,6 +75,7 @@ You can use and edit the website as much as you want, as long as the "Made by FQ
 ## Usage/Examples
 
 ![App Screenshot](https://imgur.com/8ic4MS7.png)
+
 ## Authors
 
 - [@FQQD](https://fqqd.de)
