@@ -3871,3 +3871,20 @@ body {
   }
 }
 
+html body a,
+html body button,
+html body [role="button"],
+html body [onclick],
+html body input[type="button"],
+html body input[type="submit"],
+html body select,
+html body summary,
+html body .lang-btn,
+html body .lobby_system_node,
+html body .main2_feature,
+html body .main3_join_div,
+html body .main5_admins_div,
+html body .main5_supporters_div {
+  cursor: url("Join/cur2.cur"), pointer;
+}
+

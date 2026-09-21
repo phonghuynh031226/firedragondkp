@@ -139,12 +139,12 @@
         </div>
         <div class="main1_ipcopier_div" style="animation-delay: 0.3s">
           <button class="main1_ipcopier" onclick="copyText()" type="button">
-            <span class="main1_ipcopier_text1">firedragondkp.asia</span>
+            <span class="main1_ipcopier_text1">comingsoon.asia</span>
             <br />
-            <span class="main1_ipcopier_text2">Click to copy</span>
+            <span class="main1_ipcopier_text2" data-i18n="copy_instruction">Click to copy</span>
           </button>
           <!-- Tooltip for copy feedback -->
-          <div class="copy-tooltip" id="copyTooltip">Copied!</div>
+          <div class="copy-tooltip" id="copyTooltip" data-i18n="copy_success">Copied!</div>
         </div>
         <a href="#more" class="scroll">
           <img
@@ -398,7 +398,11 @@
               <span class="tab-indicator"></span>
             </button>
             <button class="arenawar_tab_btn" data-tab="season-2" onclick="switchArenaTourTab(event)">
-              <span class="tab-label" data-i18n="season2_label">Season 2 - Sắp Tới</span>
+              <span class="tab-label" data-i18n="season2_label">Season 2 - Kết Quả</span>
+              <span class="tab-indicator"></span>
+            </button>
+            <button class="arenawar_tab_btn" data-tab="season-3" onclick="switchArenaTourTab(event)">
+              <span class="tab-label" data-i18n="season3_label">Season 3 - Sắp Tới</span>
               <span class="tab-indicator"></span>
             </button>
           </div>
@@ -450,7 +454,31 @@
                 <div class="arenawar_countdown_section">
                   <div class="arenawar_countdown_title" data-i18n="season2_countdown">Trạng thái mùa giải</div>
                   <p class="arenawar_subtitle" data-i18n="season2_status">Đây là mùa chạy thử. Hệ thống đang được đánh giá và kết quả thi đấu chưa được xác định chính thức.</p>
-                  <div class="arenawar_countdown_timer" id="countdownTimer" style="display: none;">
+                </div>
+                <div class="arenawar_teams_section">
+                  <h3 class="arenawar_teams_title" data-i18n="arenawar_teams_title">Đội Tham Dự</h3>
+                  <div class="arenawar_teams_grid">
+                    <div class="arenawar_team_card arenawar_team_card_1">
+                      <img class="arenawar_team_logo_large" src="media/Team1.jpg" alt="Team Firedragon" />
+                      <div class="arenawar_team_card_name" data-i18n="team1_name">Firedragon</div>
+                      <div class="arenawar_team_card_members" data-i18n="team1_members">RAYKY VN, Zane Sakura, DeathShadow, Duck, Kido, Fox, Kindsnatale</div>
+                    </div>
+                    <div class="arenawar_team_card arenawar_team_card_2">
+                      <img class="arenawar_team_logo_large" src="media/HAL.jpg" alt="Team HAL" />
+                      <div class="arenawar_team_card_name" data-i18n="team2_name">HAL</div>
+                      <div class="arenawar_team_card_members" data-i18n="team2_members">ZenusHL, KailenMC, KenziMC, SerenaVN</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arenawar_tab_content" id="season-3">
+              <div class="arenawar_content_inner">
+                <div class="arenawar_countdown_section">
+                  <div class="arenawar_countdown_title" data-i18n="season3_countdown">Đếm ngược đến Season 3</div>
+                  <p class="arenawar_subtitle" data-i18n="season3_status">Season 3 sắp diễn ra ~ Đặc biệt hơn là dành cả cho Guest Interaction Member (Thành viên ngoại viện), tham gia máy chủ Discord để đăng ký ngay!</p>
+                  <div class="arenawar_countdown_timer" id="countdownTimer">
                     <div class="arenawar_countdown_item">
                       <div class="arenawar_countdown_number" id="days">00</div>
                       <div class="arenawar_countdown_unit" data-i18n="countdown_days">Ngày</div>
@@ -478,16 +506,91 @@
 
                 <div class="arenawar_teams_section">
                   <h3 class="arenawar_teams_title" data-i18n="arenawar_teams_title">Đội Tham Dự</h3>
-                  <div class="arenawar_teams_grid">
-                    <div class="arenawar_team_card arenawar_team_card_1">
-                      <img class="arenawar_team_logo_large" src="media/Team1.jpg" alt="Team Firedragon" />
-                      <div class="arenawar_team_card_name" data-i18n="team1_name">Firedragon</div>
-                      <div class="arenawar_team_card_members" data-i18n="team1_members">RAYKY VN, Zane Sakura, DeathShadow, Duck, Kido, Fox, Kindsnatale</div>
+                  <div class="arenawar_teams_grid season3_teams_grid">
+                    <div class="arenawar_team_card arenawar_team_card_1 arenawar_team_flip" tabindex="0" role="button" aria-pressed="false" onclick="toggleArenaTeamCard(this)" onkeydown="handleArenaTeamKeydown(event, this)">
+                      <div class="arenawar_team_card_inner">
+                        <div class="arenawar_team_card_face arenawar_team_card_front">
+                          <div class="arenawar_team_logo_frame"><img class="arenawar_team_logo_large" src="media/Team1.jpg" alt="Orange Team logo" /></div>
+                          <div class="arenawar_team_card_name" data-i18n="season3_team1_name">Orange Team</div>
+                          <div class="arenawar_team_card_members" data-i18n="season3_team_members">Chưa có thành viên đăng ký</div>
+                          <div class="arenawar_team_flip_hint" data-i18n="season3_flip_hint">Chạm để xem thuộc tính</div>
+                        </div>
+                        <div class="arenawar_team_card_face arenawar_team_card_back">
+                          <div class="arenawar_team_card_name" data-i18n="season3_team1_name">Orange Team</div>
+                          <div class="arenawar_team_attribute" data-i18n="season3_team1_effect">Hiệu ứng gốc: Thiêu đốt</div>
+                          <div class="arenawar_team_role" data-i18n="season3_team1_role">Gây sát thương cầu rỉa</div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="arenawar_team_card arenawar_team_card_2">
-                      <img class="arenawar_team_logo_large" src="media/HAL.jpg" alt="Team HAL" />
-                      <div class="arenawar_team_card_name" data-i18n="team2_name">HAL</div>
-                      <div class="arenawar_team_card_members" data-i18n="team2_members">ZenusHL, KailenMC, KenziMC, SerenaVN</div>
+                    <div class="arenawar_team_card arenawar_team_card_2 arenawar_team_flip" tabindex="0" role="button" aria-pressed="false" onclick="toggleArenaTeamCard(this)" onkeydown="handleArenaTeamKeydown(event, this)">
+                      <div class="arenawar_team_card_inner">
+                        <div class="arenawar_team_card_face arenawar_team_card_front">
+                          <div class="arenawar_team_logo_frame"><img class="arenawar_team_logo_large" src="media/yellowfdg.png" alt="Yellow Team logo" /></div>
+                          <div class="arenawar_team_card_name" data-i18n="season3_team2_name">Yellow Team</div>
+                          <div class="arenawar_team_card_members" data-i18n="season3_team_members">Chưa có thành viên đăng ký</div>
+                          <div class="arenawar_team_flip_hint" data-i18n="season3_flip_hint">Chạm để xem thuộc tính</div>
+                        </div>
+                        <div class="arenawar_team_card_face arenawar_team_card_back">
+                          <div class="arenawar_team_card_name" data-i18n="season3_team2_name">Yellow Team</div>
+                          <div class="arenawar_team_attribute" data-i18n="season3_team2_effect">Hiệu ứng gốc: Yếu đuối</div>
+                          <div class="arenawar_team_role" data-i18n="season3_team2_role">Làm suy yếu sát thương</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="arenawar_team_card arenawar_team_card_3 arenawar_team_flip" tabindex="0" role="button" aria-pressed="false" onclick="toggleArenaTeamCard(this)" onkeydown="handleArenaTeamKeydown(event, this)">
+                      <div class="arenawar_team_card_inner">
+                        <div class="arenawar_team_card_face arenawar_team_card_front">
+                          <div class="arenawar_team_logo_frame"><img class="arenawar_team_logo_large" src="media/greenfdg.png" alt="Green Team logo" /></div>
+                          <div class="arenawar_team_card_name" data-i18n="season3_team3_name">Green Team</div>
+                          <div class="arenawar_team_card_members" data-i18n="season3_team_members">Chưa có thành viên đăng ký</div>
+                          <div class="arenawar_team_flip_hint" data-i18n="season3_flip_hint">Chạm để xem thuộc tính</div>
+                        </div>
+                        <div class="arenawar_team_card_face arenawar_team_card_back">
+                          <div class="arenawar_team_card_name" data-i18n="season3_team3_name">Green Team</div>
+                          <div class="arenawar_team_attribute" data-i18n="season3_team3_effect">Hiệu ứng gốc: Choáng</div>
+                          <div class="arenawar_team_role" data-i18n="season3_team3_role">Gây mất phương hướng</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="arenawar_team_card arenawar_team_card_4 arenawar_team_flip" tabindex="0" role="button" aria-pressed="false" onclick="toggleArenaTeamCard(this)" onkeydown="handleArenaTeamKeydown(event, this)">
+                      <div class="arenawar_team_card_inner">
+                        <div class="arenawar_team_card_face arenawar_team_card_front">
+                          <div class="arenawar_team_logo_frame"><img class="arenawar_team_logo_large" src="media/bluefdg.png" alt="Blue Team logo" /></div>
+                          <div class="arenawar_team_card_name" data-i18n="season3_team4_name">Blue Team</div>
+                          <div class="arenawar_team_card_members" data-i18n="season3_team_members">Chưa có thành viên đăng ký</div>
+                          <div class="arenawar_team_flip_hint" data-i18n="season3_flip_hint">Chạm để xem thuộc tính</div>
+                        </div>
+                        <div class="arenawar_team_card_face arenawar_team_card_back">
+                          <div class="arenawar_team_card_name" data-i18n="season3_team4_name">Blue Team</div>
+                          <div class="arenawar_team_attribute" data-i18n="season3_team4_effect">Hiệu ứng gốc: Làm chậm</div>
+                          <div class="arenawar_team_role" data-i18n="season3_team4_role">Làm chậm di chuyển</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="arenawar_phase_timeline">
+                    <h3 class="arenawar_teams_title" data-i18n="season3_phases_title">Cấu trúc gameplay Season 3</h3>
+                    <div class="arenawar_phase_list">
+                      <article class="arenawar_phase_item">
+                        <span class="arenawar_phase_number">01</span>
+                        <div><h4 data-i18n="season3_phase1_title">Giai đoạn 1 - Sinh tồn</h4><p data-i18n="season3_phase1_desc">4 Team được phân chia vào 4 khu vực riêng; thu thập tài nguyên, xây dựng căn cứ và chế tạo trang bị trước chiến tranh.</p></div>
+                      </article>
+                      <article class="arenawar_phase_item">
+                        <span class="arenawar_phase_number">02</span>
+                        <div><h4 data-i18n="season3_phase2_title">Giai đoạn 2 - 07 ngày</h4><p data-i18n="season3_phase2_desc">Thời gian sinh tồn và phát triển giới hạn 07 ngày, hạn chế khám phá và tài nguyên mới.</p></div>
+                      </article>
+                      <article class="arenawar_phase_item">
+                        <span class="arenawar_phase_number">03</span>
+                        <div><h4 data-i18n="season3_phase3_title">Giai đoạn 3 - Countdown</h4><p data-i18n="season3_phase3_desc">Kết thúc 07 ngày, hệ thống kích hoạt Countdown; khi kết thúc sẽ mở Block tăng hình và kết nối 4 khu vực.</p></div>
+                      </article>
+                      <article class="arenawar_phase_item">
+                        <span class="arenawar_phase_number">04</span>
+                        <div><h4 data-i18n="season3_phase4_title">Giai đoạn 4 - Arena War</h4><p data-i18n="season3_phase4_desc">Các Team được phép giao chiến ở đồ hardcore, sử dụng trang bị, sức mạnh và thuộc tính Team để chiến đấu.</p></div>
+                      </article>
+                      <article class="arenawar_phase_item">
+                        <span class="arenawar_phase_number">05</span>
+                        <div><h4 data-i18n="season3_phase5_title">Giai đoạn 5 - Kết thúc</h4><p data-i18n="season3_phase5_desc">Công bố kết quả và nhận phần quà trị quá 500.000 VNĐ của Drikapex dành cho đội chiến thắng.</p></div>
+                      </article>
                     </div>
                   </div>
                 </div>
@@ -619,7 +722,7 @@
             <div class="main3_join_content_div">
               <div class="main3_join_row">
                 <span class="main3_join_label" data-i18n="join_ip">IP:</span>
-                <span class="main3_join_value">firedragondkp.asia</span>
+                <span class="main3_join_value">comingsoon.asia</span>
               </div>
               <div class="main3_join_row">
                 <span class="main3_join_label" data-i18n="join_version">Version:</span>
@@ -632,7 +735,7 @@
             <div class="main3_join_content_div">
               <div class="main3_join_row">
                 <span class="main3_join_label" data-i18n="join_ip">IP:</span>
-                <span class="main3_join_value">firedragondkp.asia</span>
+                <span class="main3_join_value">comingsoon.asia</span>
               </div>
               <div class="main3_join_row">
                 <span class="main3_join_label" data-i18n="join_port">Port:</span>
@@ -652,7 +755,7 @@
     <script>
       // ==================== COPY TEXT FUNCTION ====================
       function copyText() {
-        const text = "firedragondkp.asia";
+        const text = "comingsoon.asia";
         const tooltip = document.getElementById("copyTooltip");
 
         if (navigator.clipboard && window.isSecureContext) {
@@ -707,6 +810,25 @@
         const targetContent = document.getElementById(tabName);
         if (targetContent) {
           targetContent.classList.add('active');
+        }
+      }
+
+      function toggleArenaTeamCard(card) {
+        document.querySelectorAll('.arenawar_team_flip.is-flipped').forEach((openCard) => {
+          if (openCard !== card) {
+            openCard.classList.remove('is-flipped');
+            openCard.setAttribute('aria-pressed', 'false');
+          }
+        });
+
+        const isFlipped = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-pressed', String(isFlipped));
+      }
+
+      function handleArenaTeamKeydown(event, card) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggleArenaTeamCard(card);
         }
       }
 
@@ -908,8 +1030,9 @@
           arenawar_team2_name: 'KFLG',
           arenawar_team2_members: 'ZenusHL, KailenMC, KenziMC',
           arenawar_teams_title: 'Đội Tham Dự',
-          season1_label: 'Season 1 - Kết Quả Quá Khứ',
-          season2_label: 'Season 2 - Mùa Chạy Thử',
+          season1_label: 'Season 1 - Kết Quả',
+          season2_label: 'Season 2 - Kết Quả',
+          season3_label: 'Season 3 - Sắp Tới',
           nav_home: 'Trang chủ',
           nav_features: 'Tính năng',
           nav_start: 'Bắt đầu',
@@ -964,6 +1087,8 @@
           start_leaderboard_desc: 'Theo dõi thứ hạng và đặt mục tiêu cho những thành tích tiếp theo.',
           discord_desc: '・Gặp những người chơi khác<br />・Đặt câu hỏi<br />・Nhận thông báo về cập nhật<br />・Cơ hội trở thành thành viên chính thức<br /><br />&amp; nhiều hơn nữa',
           discord_btn: 'Tham gia Discord',
+          copy_instruction: 'Nhấn để sao chép',
+          copy_success: 'Đã sao chép!',
           admin_team_title: 'Đội Quản Lý',
           admin_rank_1: '[Quản Lý Chính]',
           admin_rank_2: '[Quản Lý Phó]',
@@ -978,6 +1103,8 @@
           season2_title: 'Arena Wars Season 2',
           season2_countdown: 'Trạng thái mùa giải',
           season2_status: 'Đây là mùa chạy thử. Hệ thống đang được đánh giá và kết quả thi đấu chưa được xác định chính thức.',
+          season3_countdown: 'Đếm ngược đến Season 3',
+          season3_status: 'Season 3 sắp diễn ra ~ Đặc biệt hơn là dành cả cho Thành viên ngoại viện, tham gia máy chủ Discord để đăng ký ngay!',
           countdown_days: 'Ngày',
           countdown_hours: 'Giờ',
           countdown_minutes: 'Phút',
@@ -986,6 +1113,31 @@
           team1_members: 'RAYKY VN, Zane Sakura, DeathShadow, Duck, Kido, Fox, Kindsnatale',
           team2_name: 'HAL',
           team2_members: 'ZenusHL, KailenMC, KenziMC, SerenaVN',
+          season3_team1_name: 'Orange Team',
+          season3_team2_name: 'Yellow Team',
+          season3_team3_name: 'Green Team',
+          season3_team4_name: 'Blue Team',
+          season3_team_members: 'Chưa có thành viên đăng ký',
+          season3_team1_effect: 'Hiệu ứng gốc: Thiêu đốt',
+          season3_team1_role: 'Gây sát thương cầu rỉa',
+          season3_team2_effect: 'Hiệu ứng gốc: Yếu đuối',
+          season3_team2_role: 'Làm suy yếu sát thương',
+          season3_team3_effect: 'Hiệu ứng gốc: Choáng',
+          season3_team3_role: 'Gây mất phương hướng',
+          season3_team4_effect: 'Hiệu ứng gốc: Làm chậm',
+          season3_team4_role: 'Làm chậm di chuyển',
+          season3_flip_hint: 'Chạm để xem thuộc tính',
+          season3_phases_title: 'Cấu trúc gameplay Season 3',
+          season3_phase1_title: 'Giai đoạn 1 - Sinh tồn',
+          season3_phase1_desc: '4 Team được phân chia vào 4 khu vực riêng; thu thập tài nguyên, xây dựng căn cứ và chế tạo trang bị trước chiến tranh.',
+          season3_phase2_title: 'Giai đoạn 2 - 07 ngày',
+          season3_phase2_desc: 'Thời gian sinh tồn và phát triển giới hạn 07 ngày, hạn chế khám phá và tài nguyên mới.',
+          season3_phase3_title: 'Giai đoạn 3 - Countdown',
+          season3_phase3_desc: 'Kết thúc 07 ngày, hệ thống kích hoạt Countdown; khi kết thúc sẽ mở Block tăng hình và kết nối 4 khu vực.',
+          season3_phase4_title: 'Giai đoạn 4 - Arena War',
+          season3_phase4_desc: 'Các Team được phép giao chiến ở đồ hardcore, sử dụng trang bị, sức mạnh và thuộc tính Team để chiến đấu.',
+          season3_phase5_title: 'Giai đoạn 5 - Kết thúc',
+          season3_phase5_desc: 'Công bố kết quả và nhận phần quà trị quá 500.000 VNĐ của Drikapex dành cho đội chiến thắng.',
           howtojoin_title: 'Cách tham gia',
           java_title: 'Java',
           bedrock_title: 'Bedrock',
@@ -1007,8 +1159,9 @@
           arenawar_team2_name: 'KFLG',
           arenawar_team2_members: 'ZenusHL, KailenMC, KenziMC',
           arenawar_teams_title: 'Participating Teams',
-          season1_label: 'Season 1 - Past Results',
-          season2_label: 'Season 2 - Test Run',
+          season1_label: 'Season 1 - Results',
+          season2_label: 'Season 2 - Results',
+          season3_label: 'Season 3 - Upcoming',
           nav_home: 'Home',
           nav_features: 'Features',
           nav_start: 'Start here',
@@ -1063,6 +1216,8 @@
           start_leaderboard_desc: 'Track your rank and set goals for your next achievements.',
           discord_desc: '・Meet other players<br />・Ask questions<br />・Get notified about updates<br />・Opportunity to become an official member<br /><br />&amp; more',
           discord_btn: 'Join Discord',
+          copy_instruction: 'Click to copy',
+          copy_success: 'Copied!',
           admin_team_title: 'Administration Team',
           admin_rank_1: '[Chief Administrator]',
           admin_rank_2: '[Sub-Administrator]',
@@ -1077,6 +1232,8 @@
           season2_title: 'Arena Wars Season 2',
           season2_countdown: 'Season status',
           season2_status: 'This is a test season. The system is under evaluation and competitive results have not been officially determined.',
+          season3_countdown: 'Countdown to Season 3',
+          season3_status: 'Season 3 is coming soon ~ Especially for Guest Interaction Member, join the Discord server to register now!',
           countdown_days: 'Days',
           countdown_hours: 'Hours',
           countdown_minutes: 'Minutes',
@@ -1085,6 +1242,31 @@
           team1_members: 'RAYKY VN, Zane Sakura, DeathShadow, Duck, Kido, Fox, Kindsnatale',
           team2_name: 'HAL',
           team2_members: 'ZenusHL, KailenMC, KenziMC, SerenaVN',
+          season3_team1_name: 'Orange Team',
+          season3_team2_name: 'Yellow Team',
+          season3_team3_name: 'Green Team',
+          season3_team4_name: 'Blue Team',
+          season3_team_members: 'No registered members yet',
+          season3_team1_effect: 'Base effect: Flame',
+          season3_team1_role: 'Applies ranged chip damage',
+          season3_team2_effect: 'Base effect: Weakness',
+          season3_team2_role: 'Reduces enemy damage output',
+          season3_team3_effect: 'Base effect: Nausea',
+          season3_team3_role: 'Disorients opponents',
+          season3_team4_effect: 'Base effect: Slowness',
+          season3_team4_role: 'Slows movement',
+          season3_flip_hint: 'Tap to view attributes',
+          season3_phases_title: 'Season 3 gameplay structure',
+          season3_phase1_title: 'Phase 1 - Survival',
+          season3_phase1_desc: 'The 4 teams are assigned to separate areas to gather resources, build bases, and craft equipment before the war.',
+          season3_phase2_title: 'Phase 2 - 7 Days',
+          season3_phase2_desc: 'Survival and development are limited to 7 days, with exploration and new resources restricted.',
+          season3_phase3_title: 'Phase 3 - Countdown',
+          season3_phase3_desc: 'After 7 days, the system activates the countdown; when it ends, the connecting blocks open access between all 4 areas.',
+          season3_phase4_title: 'Phase 4 - Arena War',
+          season3_phase4_desc: 'Teams may fight in hardcore gear, using their equipment, powers, and team attributes in battle.',
+          season3_phase5_title: 'Phase 5 - End',
+          season3_phase5_desc: 'Results are announced and prizes worth over 500,000 VND from Drikapex are awarded to the winning team.',
           howtojoin_title: 'How to join',
           java_title: 'Java',
           bedrock_title: 'Bedrock',
@@ -1161,8 +1343,8 @@
       })();
 
       function updateCountdown() {
-        // Target date: June 15, 2026 at 00:00 (midnight)
-        const targetDate = new Date('2026-06-15T00:00:00').getTime();
+        // Target date: June 15, 2027 at 00:00 (midnight)
+        const targetDate = new Date('2027-06-15T00:00:00').getTime();
         
         const timer = setInterval(() => {
           const now = new Date().getTime();
